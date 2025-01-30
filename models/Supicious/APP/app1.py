@@ -20,12 +20,12 @@ class TextToSpeech:
         self.engine.say(text)
         self.engine.runAndWait()
 
-model=YOLO(r'C:\Users\Dell\Desktop\Practicum2.0\models\Supicious\model\best.pt')
+model=YOLO(r'C:\Users\Dell\Downloads\Survallence System\models\Supicious\model\best.pt')
 @app.route('/', methods=['GET', 'POST'])
 def predict():
     if request.method == 'POST':
         imagefile = request.files['imagefile']
-        image_path = "./images/" + imagefile.filename
+        image_path = "../../../images/" + imagefile.filename
         imagefile.save(image_path)
         image = cv2.imread(image_path)
         text_to_speech = TextToSpeech()

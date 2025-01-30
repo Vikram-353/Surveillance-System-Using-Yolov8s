@@ -9,7 +9,7 @@ import pyttsx3
 app = Flask(__name__)
 
 # Initialize the YOLO model
-model = YOLO(r"C:\Users\Dell\Desktop\Practicum2.0\models\HumanActivuty\model\best.pt")
+model = YOLO(r"C:\Users\Dell\Downloads\Survallence System\models\HumanActivuty\model\best.pt")
 
 class TextToSpeech:
     def __init__(self):
@@ -28,7 +28,7 @@ def predict():
         text_to_speech = TextToSpeech()
 
         imagefile = request.files['imagefile']
-        image_path = "./images/" + imagefile.filename
+        image_path = "../../../images/" + imagefile.filename
         imagefile.save(image_path)
         image = cv2.imread(image_path)
 
