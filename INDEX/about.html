@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>About Us</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(45deg, #d8bfd8, #4b0082, #bb8dff);
+        background-size: 200% 300% 300%;
+        color: #fff;
+        padding: 30px;
+      }
+
+      .container {
+        max-width: 1300px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      h1 span {
+        color: #4b0082;
+      }
+      h2 {
+        text-align: center;
+      }
+
+      p {
+        margin: 1rem;
+        text-align: justify;
+        margin-bottom: 20px;
+      }
+
+      .about-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .about-item {
+        flex: 1;
+        min-width: 300px;
+        background: rgba(255, 255, 255, 0.1);
+        /* background-filter: blur(100px); */
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        /* background-color: #4b0082; */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4b0082;
+        /* background-color: #007bff; */
+        border: none;
+        color: #fff;
+        font-size: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        box-shadow: rgba(100, 100, 111, 0.2) 5px 10px 10px 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #bb8dff;
+      }
+
+      @media screen and (max-width: 768px) {
+        .about-item {
+          flex: 1 0 100%;
+        }
+      }
+      .go-back {
+        margin: 3rem;
+        text-align: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" data-aos="fade-up">
+      <h1>About <span>Us</span></h1>
+      <div class="about-content">
+        <div class="about-item">
+          <h2>Our Mission</h2>
+          <p>
+            Project Mission: Our project focuses on harnessing computer vision
+            techniques to classify human activities and detect suspicious
+            behavior. Through advanced algorithms and machine learning models,
+            we aim to develop a robust system capable of accurately recognizing
+            and categorizing a wide range of human actions, including walking,
+            running, gesturing, and interacting with objects. Additionally, our
+            system will be trained to identify behaviors indicative of potential
+            threats or suspicious activities, such as loitering, fighting,
+            carrying weapons, or engaging in vandalism. By achieving high
+            accuracy and reliability in classification and detection, our
+            solution aims to contribute to enhancing security in various
+            environments, including public spaces, transportation hubs, and
+            critical infrastructure facilities.Through these efforts, our
+            project seeks to advance the capabilities of surveillance
+            technology, ultimately aiding in the prevention and mitigation of
+            security risks and ensuring the safety of individuals and
+            communities.
+          </p>
+        </div>
+        <div class="about-item" data-aos="fade-up">
+          <h2>Our Vision</h2>
+          <p>
+            Vision Statement: Our vision is to pioneer the next generation of
+            surveillance technology by leveraging cutting-edge computer vision
+            techniques for the classification of human activities and the
+            detection of suspicious behavior. We aspire to develop a highly
+            sophisticated system capable of accurately interpreting visual data
+            to identify and categorize a multitude of human actions with
+            precision and efficiency. By harnessing the power of machine
+            learning and advanced algorithms, we aim to create a platform that
+            not only enhances security measures but also fosters a safer and
+            more secure environment for individuals and communities. Our vision
+            extends beyond mere detection; we envision a solution that empowers
+            authorities and security personnel with actionable insights,
+            enabling proactive interventions to prevent potential threats and
+            minimize risks. We are committed to ethical principles, ensuring
+            that our technology respects privacy rights and upholds ethical
+            standards in surveillance practices. Ultimately, our vision is to
+            redefine the boundaries of surveillance technology, contributing to
+            a safer and more secure world for all.
+          </p>
+        </div>
+        <div class="about-item" data-aos="fade-up">
+          <h2>Our Values</h2>
+          <p>
+            Our core values are deeply rooted in innovation, integrity, and
+            collaboration. We prioritize accuracy and reliability in our pursuit
+            of leveraging computer vision technology to classify human
+            activities and detect suspicious behavior. Upholding the highest
+            ethical standards, we ensure transparency and accountability in all
+            our endeavors, placing the protection of privacy and civil liberties
+            at the forefront. Through collaborative efforts with industry
+            experts and community stakeholders, we foster an environment of
+            inclusivity and accessibility, striving to make our technology
+            user-friendly and adaptable to diverse needs. Empowering individuals
+            and organizations with actionable insights, we aim to enhance
+            security measures and promote informed decision-making. Committed to
+            social responsibility, we actively seek to address societal
+            challenges and contribute positively to our communities and the
+            environment. These values guide us in our mission to create a safer
+            and more secure world for all.
+          </p>
+        </div>
+      </div>
+      <div class="go-back">
+        <a href="./main.html"
+          ><input class="btn" type="submit" value="Go Back"
+        /></a>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 350,
+        duration: 1500,
+      });
+    </script>
+  </body>
+</html>

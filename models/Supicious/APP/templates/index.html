@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Suspicious Activity Classifier</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        /* background-color: #663399; */
+        background: linear-gradient(90deg, #4b0082, #bb8dff, #d8bfd8);
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+        color: #fff;
+      }
+
+      form {
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #d8bfd8;
+        border-radius: 8px;
+        filter: blur(0px 1px 5px black);
+        -webkit-filter: drop-shadow(5px 5px 7px black);
+        border: 0px solid rgba(255, 255, 255, 0.5);
+        box-shadow: rgba(100, 100, 111, 0.2) 5px 10px 10px 5px;
+      }
+
+      input[type="file"] {
+        display: block;
+        width: 90%;
+        justify-content: center;
+        margin-bottom: 20px;
+        margin-left: 0.5rem;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: rgba(100, 100, 111, 0.2) 5px 10px 10px 5px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #663399;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        box-shadow: rgba(100, 100, 111, 0.2) 5px 10px 10px 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #bb8dff;
+      }
+
+      .result {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+        color: #fff;
+      }
+
+      .image-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+      }
+      .go-back {
+        margin: 3rem;
+        text-align: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div data-aos="fade-up">
+      <h1>Suspicious Activity Classifier</h1>
+
+      <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="imagefile" />
+        <input class="btn" type="submit" value="Predict Image" />
+      </form>
+
+      {% if prediction %}
+      <div class="result">Predicted class: {{ prediction }}</div>
+      <div class="image-container">
+        <img src="data:image/png;base64,{{ img_base64 }}" alt="Input Image" />
+      </div>
+      {% endif %} {% if msg %}
+      <p class="result">{{ msg }}</p>
+      {% endif %}
+      <div class="go-back">
+        <a href="http://127.0.0.1:5500/INDEX/main.html"
+          ><input class="btn" type="submit" value="Go Back"
+        /></a>
+      </div>
+    </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 350,
+        duration: 1500,
+      });
+    </script>
+  </body>
+</html>

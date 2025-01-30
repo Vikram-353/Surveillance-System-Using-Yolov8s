@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV Predictive Models</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100%;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        background-color: #663399;
+        width: 100%;
+        margin: auto;
+        padding: 40px;
+      }
+      .model-section {
+        margin-top: 2rem;
+        display: flex;
+        background-color: #d8bfd8;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 3rem;
+        box-shadow: rgba(100, 100, 111, 0.2) 5px 10px 10px 5px;
+      }
+
+      .model-section img {
+        filter: drop-shadow(5px 5px 7px black);
+        -webkit-filter: drop-shadow(5px 5px 7px black);
+        border: 0px solid rgba(255, 255, 255, 0.5);
+        box-shadow: rgba(100, 100, 111, 0.2) 5px 20px 20px 5px;
+        width: 50%;
+        height: 30rem;
+        border-radius: 15px;
+      }
+      .text {
+        padding: 20px;
+        text-align: justify;
+        /* margin-left: 12rem; */
+      }
+      .text p {
+        margin: 2rem;
+        line-height: 1.5rem;
+      }
+      .model-button {
+        display: block;
+        width: 200px;
+        margin: auto;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #663399;
+        border: none;
+        color: #faf6f6;
+        font-size: 16px;
+        border-radius: 4px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        box-shadow: rgba(100, 100, 100, 0.2) 0px 10px 10px 0px;
+        transition: background-color 0.3s ease;
+      }
+      .model-button-1 {
+        text-decoration: none;
+        display: block;
+        width: 200px;
+        margin: auto;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #bb8dff;
+        border: none;
+        color: #faf7f7;
+        font-size: 16px;
+        font-weight: 600;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: rgba(100, 100, 100, 0.2) 0px 10px 10px 0px;
+        animation: slideRight;
+        animation-duration: 6s;
+        animation-direction: ease-in-out;
+      }
+      .model-button:hover {
+        background-color: #bb8dff;
+        color: black;
+      }
+      .model-button-1:hover {
+        background-color: #d8bfd8;
+        color: black;
+      }
+      .model-section h1 {
+        text-align: center;
+        color: #333;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: white;
+      }
+
+      .Container-1 {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 15%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        /* background-filter: blur(50px); */
+        background: rgba(0, 0, 0, 0.1);
+        filter: drop-shadow(5px 5px 7px black);
+        -webkit-filter: drop-shadow(5px 5px 7px black);
+        border: 0px solid rgba(255, 255, 255, 0.5);
+        /* box-shadow: rgba(100, 100, 111, 0.2) 5px 20px 20px 5px; */
+      }
+
+      .navbar a {
+        font-weight: 600;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: white;
+        margin-left: 2rem;
+      }
+      .navbar,
+      a:hover {
+        color: #bb8dff;
+      }
+      .logo:hover {
+        color: white;
+        cursor: auto;
+      }
+      #check {
+        display: none;
+      }
+      .icons {
+        right: 5%;
+        font-weight: 700;
+        cursor: pointer;
+        display: none;
+      }
+
+      .Contact {
+        display: flex;
+        background: black;
+      }
+
+      .Contact .contact-1 {
+        color: #bb8dff;
+        margin: 4rem;
+        margin-left: 10rem;
+      }
+      .contact-1 h1 {
+        color: #fff;
+        text-align: center;
+        margin-right: 5rem;
+        font-size: 3rem;
+      }
+      .contact-1 h1 span {
+        color: #bb8dff;
+      }
+      .contact-details {
+        display: flex;
+        margin-top: 3rem;
+      }
+
+      .Contact .contact form {
+        max-width: 80rem;
+        text-align: right;
+      }
+
+      .Contact form input,
+      form textarea {
+        width: 50%;
+        border: 0;
+        outline: none;
+        background: #d8bfd8;
+        padding: 10px;
+        margin: 0.5rem;
+        color: #000;
+        font-size: 18px;
+        border-radius: 15px;
+      }
+      .Contact input[type="submit"] {
+        margin-top: 1rem;
+        min-width: 10rem;
+        background-color: #663399;
+        color: #fff;
+      }
+      .Contact input[type="submit"]:hover {
+        background-color: #bb8dff;
+      }
+      .Contact input:focus {
+        border: 2px solid #bb8dff;
+      }
+      .Contact form textarea:focus {
+        border: 2px solid #bb8dff;
+      }
+
+      .map {
+        margin-top: -2rem;
+        margin-left: -20rem;
+      }
+      .map p {
+        margin: 2rem;
+        margin-right: 3rem;
+      }
+
+      footer {
+        display: flex;
+        height: 7rem;
+        width: 100%;
+        background-color: hsl(200, 10%, 7%);
+      }
+
+      footer .foot {
+        display: flex;
+        font-weight: 600;
+        margin: 3rem;
+        margin-left: 13rem;
+        color: #d8bfd8;
+        justify-content: center;
+        align-items: center;
+      }
+
+      footer .vips {
+        margin-left: 10rem;
+      }
+
+      .hero {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          #000,
+          #d8bfd8,
+          #7462ff,
+          #d8bfd8,
+          #bb8dff,
+          #d2001a,
+          #7462ff,
+          #000000
+        );
+        background-size: 300% 300%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-attachment: fixed;
+        overflow: hidden;
+      }
+
+      .home h1 {
+        margin: 1.5rem;
+        /* color: #fff; */
+        font-size: 2rem;
+        -webkit-text-fill-color: transparent;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: #000;
+        font-family: montserrat;
+        text-transform: uppercase;
+        letter-spacing: 8px;
+        animation: slideRight;
+        animation-duration: 5s;
+        animation-direction: forward;
+      }
+      @keyframes slideRight {
+        0% {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+      }
+      .home h2 {
+        color: #000;
+        animation: slideleft;
+        animation-duration: 5s;
+        animation-direction: forward;
+      }
+      @keyframes slideleft {
+        0% {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+      }
+      .wrapper {
+        position: relative;
+      }
+      .wrapper div {
+        width: 70px;
+        height: 70px;
+        border: 5px solid #7462ff;
+        position: absolute;
+      }
+      .wrapper div:nth-child(1) {
+        top: 10%;
+        left: 30%;
+        margin-top: 3rem;
+        animation: square 5s linear infinite;
+      }
+      .wrapper div:nth-child(2) {
+        top: 20%;
+        left: 50%;
+        margin-top: 10rem;
+        animation: square 8s linear infinite;
+      }
+      .wrapper div:nth-child(3) {
+        top: 60%;
+        left: 10%;
+        margin-top: -13rem;
+        animation: square 9s linear infinite;
+      }
+      .wrapper div:nth-child(4) {
+        top: 50%;
+        left: 40%;
+        margin-top: -15rem;
+        margin-left: 3rem;
+        animation: square 11s linear infinite;
+      }
+      .wrapper div:nth-child(5) {
+        top: 40%;
+        left: 60%;
+        margin-top: -20rem;
+        animation: square 7s linear infinite;
+      }
+      .wrapper div:nth-child(6) {
+        top: 80%;
+        left: 30%;
+        margin-top: -10rem;
+        animation: square 13s linear infinite;
+      }
+      .wrapper div:nth-child(7) {
+        top: 60%;
+        left: 10%;
+        margin-top: 5rem;
+
+        animation: square 12s linear infinite;
+      }
+      .wrapper div:nth-child(8) {
+        top: 75%;
+        left: 65%;
+        margin-top: 4rem;
+        animation: square 9s linear infinite;
+      }
+      .wrapper div:nth-child(9) {
+        top: 20%;
+        left: 85%;
+        margin-top: 8rem;
+        animation: square 8s linear infinite;
+      }
+      .wrapper div:nth-child(10) {
+        top: 80%;
+        left: 85%;
+        margin-top: -10rem;
+        animation: square 7s linear infinite;
+      }
+      @keyframes square {
+        0% {
+          transform: scale(0) translateY(0) rotate(0);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.2) translateY(-90px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes color {
+        0% {
+          background-position: 0 50%;
+        }
+        50% {
+          background-position: 100 50%;
+        }
+        100% {
+          background-position: 0 50%;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        body {
+          width: 100%;
+        }
+        .Container-1 {
+          width: 42.1%;
+          padding: 1.3rem 5%;
+        }
+        .icons {
+          display: inline-flex;
+        }
+        /* #check:checked~.icons, #menu-icon{
+          display: ;
+        } */
+        .icons #close-icon {
+          display: none;
+        }
+        #check:checked ~ .icons,
+        #close-icon {
+          display: block;
+        }
+        .navbar {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          height: 0;
+          background: rgba(0, 0, 0, 0.1);
+          /* background-filter: blur(100px); */
+          transition: 0.3s ease;
+          overflow: hidden;
+        }
+        #check:checked ~ .navbar {
+          height: 15.7rem;
+        }
+        .navbar a {
+          display: block;
+          font-size: 1.1rem;
+          margin: 2rem 0;
+          text-align: center;
+          transform: translateY(-50px);
+          opacity: 0;
+          transition: 0.3s ease;
+        }
+        #check:checked ~ .navbar a {
+          transform: translateY(0);
+          opacity: 1;
+          transition-delay: calc(0.15s * var(--i));
+        }
+
+        .home h2 {
+          font-size: 1.5rem;
+          margin: 1rem;
+        }
+        .model-section img {
+          width: 100%;
+        }
+        .text {
+          display: grid;
+          margin-top: 32rem;
+          margin-right: -3em;
+          margin-left: -43rem;
+        }
+        .text p {
+          text-decoration: none;
+        }
+        .model-button {
+          margin-top: 1rem;
+          margin-bottom: 2rem;
+        }
+        .map {
+          margin-top: 30rem;
+          margin-left: -15rem;
+        }
+        .contact-1 h1 {
+          margin-right: 8rem;
+          font-size: 2rem;
+        }
+        .contact-details {
+          margin-left: -5rem;
+        }
+
+        .Contact .contact form {
+          max-width: 100rem;
+          text-align: right;
+        }
+        .Contact form input,
+        form textarea {
+          width: 270%;
+        }
+        footer {
+          height: 12rem;
+        }
+        footer .foot p {
+          margin-right: 72rem;
+          margin-top: -3rem;
+        }
+        footer .vips {
+          margin-right: -100rem;
+          margin-top: 8rem;
+          margin-left: -97rem;
+        }
+      }
+      @media (max-width: 440px) {
+        .Container-1 {
+          width: 87%;
+        }
+        .logo {
+          font-size: 1rem;
+        }
+        .container {
+          width: 100%;
+        }
+        .model-section img {
+          height: 20rem;
+        }
+        .text {
+          display: grid;
+          margin-top: 21rem;
+          margin-left: -23rem;
+        }
+        .text h1 {
+          font-size: 1.5rem;
+        }
+        .text p {
+          font-size: 1.2rem;
+        }
+        .model-button {
+          margin-top: -1rem;
+          margin-bottom: -0.5rem;
+        }
+        .map iframe {
+          width: 20rem;
+          height: 20rem;
+        }
+        .map {
+          margin-left: -12rem;
+        }
+        .contact-1 h1 {
+          font-size: 1rem;
+          margin-left: 1rem;
+        }
+        .Contact .contact-form {
+          max-width: 50rem;
+          text-align: center;
+          margin-left: -2rem;
+        }
+        .Contact form input,
+        form textarea {
+          width: 190%;
+        }
+
+        footer {
+          height: 8rem;
+        }
+
+        footer .foot p {
+          font-size: 1rem;
+          margin-left: -127rem;
+        }
+        footer .vips p {
+          display: none;
+        }
+      }
+      @media (max-width: 415px) {
+        .Container-1 {
+          width: 87%;
+        }
+        .logo {
+          font-size: 1rem;
+        }
+
+        .model-section img {
+          height: 20rem;
+        }
+        .text {
+          display: grid;
+          margin-top: 20rem;
+          margin-left: -21rem;
+        }
+        .text h1 {
+          font-size: 1.5rem;
+        }
+        .map {
+          margin-left: -12.6rem;
+        }
+        .map iframe {
+          width: 20rem;
+          height: 20rem;
+        }
+
+        .contact-1 h1 {
+          font-size: 1rem;
+          margin-left: -2rem;
+        }
+        .Contact .contact-form {
+          max-width: 50rem;
+          text-align: center;
+          margin-left: -2.5rem;
+        }
+        .Contact form input,
+        form textarea {
+          width: 180%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero" id="home">
+      <div class="Container-1" data-aos="fade-down">
+        <a class="logo" href="#">Surveillance Detection</a>
+        <input type="checkbox" id="check" />
+        <label for="check" class="icons">
+          <svg
+            id="menu-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            height="26px"
+            viewBox="0 -960 960 960"
+            width="26px"
+            fill="#FFFFFF"
+          >
+            <path
+              d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+            />
+          </svg>
+          <svg
+            id="close-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            height="26px"
+            viewBox="0 -960 960 960"
+            width="26px"
+            fill="#FFFFFF"
+          >
+            <path
+              d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+            />
+          </svg>
+        </label>
+        <nav class="navbar">
+          <a href="#home" style="--i: 0">Home</a>
+          <a href="./about.html" style="--i: 1">About</a>
+          <a href="#Contact" style="--i: 2">Contact Us</a>
+          <a href="login.html" style="--i: 3">Registration</a>
+        </nav>
+      </div>
+      <div class="home" data-aos="flip-down">
+        <h1>Surveillance Detection Using YOLO Algorithm</h1>
+        <h2>
+          Welcome To Our Suspicious Activity Detection & Human Action Detection
+          System
+        </h2>
+        <a href="#models" class="model-button-1">Leran More</a>
+        <div class="wrapper">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container" id="models">
+        <div class="model-section" data-aos="fade-up">
+          <img
+            src="https://tcksa.com/wp-content/uploads/2023/10/AdobeStock_599522954-scaled.jpeg"
+            alt=""
+            data-aos="fade-left"
+          />
+          <div class="text" data-aos="fade-right">
+            <h1>Suspicious Activity</h1>
+            <p>
+              Deployed YOLO v8 for image-based threat detection, Pinpointing
+              occurrences of robbery, road accidents, and explosions, Utilizing
+              deep learning to analyze visual cues swiftly,Enhancing
+              surveillance systems for proactive risk mitigation, Optimizing
+              response protocols for rapid intervention, Minimizing the impact
+              of criminal activities and emergencies, Ensuring public safety
+              through advanced image recognition,
+            </p>
+            <a href="http://127.0.0.1:3000" class="model-button"
+              >Go to Model 1 App</a
+            >
+          </div>
+        </div>
+        <div class="model-section" data-aos="fade-up">
+          <img
+            src="https://unicorina.com/wp-content/uploads/2019/09/1_-5jDt7jvwgGkuM2K4I0R5w-768x432.jpeg"
+            alt=""
+            data-aos="fade-left"
+          />
+          <div class="text" data-aos="fade-right">
+            <h1>Human Action Detection</h1>
+            <p>
+              Leveraged YOLO v8 to detect human behavior in images, Identifying
+              gestures, postures, and interactions accurately, Utilized deep
+              learning to analyze complex human activities, Recognized behaviors
+              such as running, fighting, or loitering, Providing insights for
+              security monitoring and crowd control, Enhancing situational
+              awareness in public spaces and events, Optimizing resource
+              allocation for safety and security measures, Minimizing risks by
+              flagging suspicious or abnormal behavior, Enabling proactive
+              interventions to prevent potential threats, Empowering
+              surveillance systems with advanced behavior recognition.
+            </p>
+            <a href="http://127.0.0.1:3001" class="model-button"
+              >Go to Model 2 App</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="Contact" id="Contact">
+      <div class="contact-1" data-aos="fade-up">
+        <h1>Contact <span>Us</span></h1>
+        <div class="contact-details">
+          <div class="contact-form" data-aos="fade-left">
+            <form
+              action="https://api.web3forms.com/submit"
+              method="POST"
+              class="contact-mail"
+            >
+              <input
+                type="hidden"
+                name="access_key"
+                value="0bc5375d-9976-4990-9b79-538d159b252f"
+              />
+              <input type="Name" name="Name" placeholder="Name" required />
+              <input
+                type="Phone Number"
+                name="Number"
+                placeholder="Phone Number"
+                required
+              />
+              <input type="Email" name="Email" placeholder="Email" required />
+              <textarea
+                name="Message"
+                rows="6"
+                placeholder="Message"
+                required
+              ></textarea>
+              <input type="Submit" value="Submit" class="btn-box-1" />
+            </form>
+          </div>
+          <div class="map" data-aos="fade-right">
+            <!-- <h2>Address</h2> -->
+            <p>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3498.941712825553!2d77.13919537457645!3d28.721287880046315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d0170e8096b31%3A0x9a906c658b08a033!2sVivekananda%20Institute%20of%20Professional%20Studies!5e0!3m2!1sen!2sin!4v1713127711922!5m2!1sen!2sin"
+                width="550"
+                height="400"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="foot">
+        <p>@2024... All Rights Reserved</p>
+        <div class="vips">
+          <p>VIVEKANANDA SCHOOL OF ENGINEERING AND TECHNOLOGY, GGSIPU</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 250,
+        duration: 1000,
+      });
+    </script>
+  </body>
+</html>

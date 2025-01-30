@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login or Signup</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(
+          45deg,
+          #d8bfd8,
+          #663399,
+          #bb8dff,
+          #663399,
+          #d8bfd8,
+          #bb8dff,
+          #7462ff,
+          #d8bfd8,
+          #000
+        );
+        background-size: 300% 300%;
+        /* background-image:linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.3)), url(https://img.freepik.com/photos-premium/camera-videosurveillance-surveillance-fonctionnant-dans-rue-dans-batiment-nuit-reseau-neurones-genere-par-ia_76080-27863.jpg);
+        background-color: #663399;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover; */
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        background: linear-gradient(45deg, #d8bfd8, #d8bfd8, #bb8dff);
+        /* background-filter: blur(200px); */
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(10, 10, 20, 0.1);
+        animation: slideRight;
+        animation-duration: 3s;
+        animation-direction: forward;
+      }
+      @keyframes slideRight {
+        0% {
+          transform: translateX(-150px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+      }
+
+      h1 {
+        margin: 1rem;
+        text-align: center;
+      }
+      .container p {
+        margin-top: 1.5rem;
+        text-align: center;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #663399;
+      }
+
+      input[type="submit"] {
+        padding: 10px;
+        border: none;
+        background-color: #663399;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #5a2d8f;
+      }
+
+      .error {
+        color: red;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login">
+        <h1>Login or Sign Up</h1>
+        <form id="loginForm">
+          <input type="text" id="username" placeholder="Username" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <input type="submit" value="Login" />
+        </form>
+        <p>
+          Don't have an account?
+          <a href="#" onclick="toggleForm()" id="Signup">Sign Up</a>
+        </p>
+      </div>
+      <div class="Signup">
+        <form id="signupForm" style="display: none">
+          <input
+            type="text"
+            id="newUsername"
+            placeholder="New Username"
+            required
+          />
+          <input
+            type="password"
+            id="newPassword"
+            placeholder="New Password"
+            required
+          />
+          <input type="submit" value="Sign Up" />
+        </form>
+      </div>
+      <p id="errorMessage" class="error" style="display: none"></p>
+    </div>
+
+    <script>
+      function toggleForm() {
+        const loginForm = document.getElementById("loginForm");
+        const signupForm = document.getElementById("signupForm");
+        const errorMessage = document.getElementById("errorMessage");
+
+        loginForm.style.display = "none";
+        loginForm.style.display === "none" ? "block" : "none";
+        signupForm.style.display =
+          signupForm.style.display === "none" ? "block" : "none";
+        errorMessage.style.display = "none";
+      }
+
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+
+          // Perform login validation here
+          // For simplicity, I'm just checking if both fields are filled
+          if (username.trim() === "" || password.trim() === "") {
+            document.getElementById("errorMessage").innerText =
+              "Please fill in both fields.";
+            document.getElementById("errorMessage").style.display = "block";
+          } else {
+            // Redirect to main page (replace 'main.html' with your main page URL)
+            window.location.href = "http://127.0.0.1:5500/INDEX/main.html";
+          }
+        });
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const newUsername = document.getElementById("newUsername").value;
+          const newPassword = document.getElementById("newPassword").value;
+          alert("Signup successful!");
+          // Redirect to main page
+          window.location.href = "http://127.0.0.1:5500/INDEX/login.html";
+        });
+    </script>
+  </body>
+</html>
